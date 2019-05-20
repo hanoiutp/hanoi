@@ -2,30 +2,29 @@
 #include "miniwin.h"
 using namespace miniwin;
 ///funcion que dibujara el tablero
-void tablerot(int respuesta){
-    ///juador
-    if(respuesta == int('a') || respuesta == int('A')){
-        color(BLANCO);
-        texto(400,23,"nuevo juego");
-        color(VERDE);
-        linea(50,50,850,50);
-
-    }
-    ///automata
-    else if(respuesta == int('B') || respuesta == int('b')||respuesta == int('c') || respuesta == int('C')){
-        color(BLANCO);
-        texto(380,20,"automata");
-        color(ROJO);
-        linea(50,50,850,50);
-    }
-    ///automata con recursividad
-    else if(respuesta == int('d') || respuesta == int('D')){
+void tablerot(int respuesta,bool automata){
+    if(respuesta == int('d') || respuesta == int('D')){
         color(BLANCO);
         texto(350,20,"tablero de puntuaciones");
         color(ROJO);
         linea(50,50,850,50);
     }
-      refresca();
+
+    else if  (automata == true){
+        color(BLANCO);
+        texto(380,20,"automata");
+        color(ROJO);
+        linea(50,50,850,50);
+
+        }
+     else if  (automata == false){
+            color(BLANCO);
+            texto(400,23,"nuevo juego");
+            color(VERDE);
+            linea(50,50,850,50);
+    }
+
+
 }
 
 void menu(){
@@ -62,10 +61,23 @@ void menu(){
    linea(280,400,530,400);
    refresca();
 }
+    int hanoi [9][3] {
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+        {0,0,0},
+    };
 
 int main() {
+
     menu();
     int respuesta;
+    bool automata = false;
     while(true){
             ///se lee la entrada del la tecla del usario
           respuesta = tecla();
@@ -73,26 +85,70 @@ int main() {
           if(respuesta == int('a') || respuesta == int('A')){
                 borra();
                 refresca();
-                tablerot(respuesta);
+                respuesta = NINGUNA;
+                while(true){
+                    respuesta = tecla();
+                    ///falta mensaje para elegir
+                        if (respuesta == int('1')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                         else if (respuesta == int('2')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                       else if  (respuesta == int('3')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                        else if (respuesta == int('4')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                       else if  (respuesta == int('5')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                       else if  (respuesta == int('6')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                        else if(respuesta == int('7')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+                        else if(respuesta == int('8')){
+                            tablerot(respuesta,automata);
+                            refresca();
+                        }
+
+
+                }
+
           }
           ///automata
           else if(respuesta == int('B') || respuesta == int('b')){
                 borra();
                 refresca();
-                tablerot(respuesta);
+                automata = true;
+                tablerot(respuesta,automata);
+                refresca();
           }
           ///automata 2
           else if(respuesta == int('c') || respuesta == int('C')){
                 borra();
                 refresca();
-                tablerot(respuesta);
+                automata = true;
+                tablerot(respuesta,automata);
+                refresca();
 
           }
           ///puntajes
           else if(respuesta == int('d') || respuesta == int('D')){
                 borra();
                 refresca();
-                tablerot(respuesta);
+                tablerot(respuesta,automata);
+                refresca();
 
           }
           ///salir
