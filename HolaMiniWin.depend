@@ -23,3 +23,8 @@
 1320920740 c:\users\jhonathan vidal\documents\github\hanoi\miniwin.h
 	<iostream>
 
+1558378022 source:c:\users\jhonathan vidal\documents\github\hanoi\main.cpp
+	<iostream>
+	<string>
+	"miniwin.h"
+

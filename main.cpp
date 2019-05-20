@@ -1,5 +1,8 @@
+#include <iostream>
+#include <string>
 
 #include "miniwin.h"
+using namespace std;
 using namespace miniwin;
 ///funcion que dibujara el tablero
 void tablerot(int respuesta,bool automata){
@@ -61,45 +64,40 @@ void menu(){
    linea(280,400,530,400);
    refresca();
 }
-    int hanoi [9][3] {
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-        {0,0,0},
-    };
+    int hanoi [8] = {1,1,1,1,1,1,1,1};
+    int hanoi1 [8] = {0,0,0,0,0,0,0,0};
+    int hanoi2 [8] = {0,0,0,0,0,0,0,0};
+    int tope = 7;
+    int tope1 = 7;
+    int tope2 = 7;
 
 int main() {
-
     menu();
     int respuesta;
     bool automata = false;
     while(true){
             ///se lee la entrada del la tecla del usario
           respuesta = tecla();
+          string respuesta1;
+          string respuestar;
     ///usuario
           if(respuesta == int('a') || respuesta == int('A')){
                 borra();
                 refresca();
                 respuesta = NINGUNA;
-                while(true){
+                while(respuesta != RETURN){
                     respuesta = tecla();
+                    respuestar = char(respuesta);
+                    respuesta1 = respuesta1 + respuestar;
+                }
+                respuesta = NINGUNA;
+                while(true){
                     ///falta mensaje para elegir
-                        if (respuesta == int('1')){
-                            tablerot(respuesta,automata);
-                            refresca();
-                        }
-                         else if (respuesta == int('2')){
-                            tablerot(respuesta,automata);
-                            refresca();
-                        }
-                       else if  (respuesta == int('3')){
-                            tablerot(respuesta,automata);
-                            refresca();
+                        respuesta = tecla();
+                        if  (respuesta == int('3')){
+                                tablerot(respuesta,automata);
+                                refresca();
+                                mensaje(respuesta1);
                         }
                         else if (respuesta == int('4')){
                             tablerot(respuesta,automata);
@@ -156,11 +154,13 @@ int main() {
                 break;
           }
           else{
+
             ///mensaje de error
           }
     }
     borra();
     refresca();
+    vcierra();
     return 0;
 
 
